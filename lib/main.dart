@@ -1,5 +1,4 @@
-import 'package:eliminatorias_2022/screens/index_screen.dart';
-import 'package:eliminatorias_2022/widgets/country_info.dart';
+import 'package:eliminatorias_2022/screens/routing_base_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +23,8 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        fontFamily: 'Inter',
+        primarySwatch: Colors.blue, // 0xffd1b121
       ),
       home: const IndexScreen(),
     );

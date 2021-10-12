@@ -1,10 +1,8 @@
-import 'dart:convert';
 
-import 'package:eliminatorias_2022/classes/country.dart';
-import 'package:eliminatorias_2022/data/countries.dart';
-import 'package:eliminatorias_2022/widgets/mv_players.dart';
-import 'package:eliminatorias_2022/widgets/mv_teams.dart';
-import 'package:eliminatorias_2022/widgets/teams_ranking.dart';
+import 'package:eliminatorias_2022/classes/tournament.dart';
+import 'package:eliminatorias_2022/screens/mv_players_screen.dart';
+import 'package:eliminatorias_2022/screens/mv_teams_screen.dart';
+import 'package:eliminatorias_2022/screens/teams_ranking_screen.dart';
 import 'package:flutter/material.dart';
 
 class IndexScreen extends StatefulWidget {
@@ -18,9 +16,9 @@ class _IndexScreenState extends State<IndexScreen> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    TeamsRanking(countries: Country.manyFromJson(jsonDecode(countriesJson))),
-    MvPlayers(countries: Country.manyFromJson(jsonDecode(countriesJson))),
-    MvTeams(countries: Country.manyFromJson(jsonDecode(countriesJson)))
+    TeamsRanking(countries: Tournament.getCountries()),
+    MvPlayers(countries: Tournament.getCountries()),
+    MvTeams(countries: Tournament.getCountries())
   ];
 
   void _onItemTapped(int index) {
@@ -42,10 +40,11 @@ class _IndexScreenState extends State<IndexScreen> {
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        iconSize: 35,
-        unselectedFontSize: 17,
-        selectedFontSize: 17,
+        iconSize: 33,
+        unselectedFontSize: 16,
+        selectedFontSize: 16,
         type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.emoji_events),
@@ -61,7 +60,7 @@ class _IndexScreenState extends State<IndexScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color(0xffd1b121),
+        selectedItemColor: Theme.of(context).primaryColor,
         onTap: _onItemTapped,
       ),
     );

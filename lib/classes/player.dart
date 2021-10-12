@@ -11,7 +11,7 @@ class Player {
 
   static List<Player> manyFromJson(dynamic json) {
     List<Player> countries = [];
-    json.map((value) {
+    json.forEach((value) {
       countries.add(Player.fromJson(value));
     });
     return countries;
